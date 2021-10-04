@@ -2,7 +2,6 @@ package files;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 public enum Projects {
@@ -22,6 +21,55 @@ public enum Projects {
                 }
             }
             return 0;
+        }
+    }),
+    STRING_COMBINATION(new Project("String Combination",
+            "Complete the lab by printing a string that uses the + or "+
+                    ", operators to combine multiple stings."
+            , 10, 2) {
+        @Override
+        public void input(BufferedWriter writer, List<String> code) {
+
+        }
+        @Override
+        public int calculatePoints(List<String> code, List<String> outputs) {
+            if (!outputs.isEmpty()) {
+                for (String s:code) {
+                    if (s.contains("print(")) {
+                        if (s.contains("\",\"") || s.contains("\"+\""))
+                            return 10;
+                    }
+                }
+            }
+            return 0;
+        }
+    }),
+    TAKING_USER_INPUT(new Project("Taking User Input",
+            "Complete the lab by printing a the user's input using the "+
+                    "the input() function."
+            , 15, 3) {
+        @Override
+        public void input(BufferedWriter writer, List<String> code) throws IOException {
+            writer.write(randomId);
+        }
+        @Override
+        public int calculatePoints(List<String> code, List<String> outputs) {
+            int points = 0;
+            if (!outputs.isEmpty()) {
+                for (String s:code) {
+                    if (s.contains("print(")) {
+                        points += 5;
+                    } if (s.contains("input("))
+                        points += 5;
+                }
+            }
+            for (String s:outputs) {
+                if (s.contains(randomId)) {
+                    points += 5;
+                    break;
+                }
+            }
+            return points;
         }
     }),
     USING_IF_STATEMENT(new Project("Using If Statements",
@@ -49,55 +97,6 @@ public enum Projects {
                 points += 6;
             }
             return points;
-        }
-    }),
-    TAKING_USER_INPUT(new Project("Taking User Input",
-            "Complete the lab by printing a the user's input using the "+
-            "the input() function."
-    , 15, 3) {
-        @Override
-        public void input(BufferedWriter writer, List<String> code) throws IOException {
-            writer.write(randomId);
-        }
-        @Override
-        public int calculatePoints(List<String> code, List<String> outputs) {
-            int points = 0;
-            if (!outputs.isEmpty()) {
-                for (String s:code) {
-                    if (s.contains("print(")) {
-                        points += 5;
-                    } if (s.contains("input("))
-                        points += 5;
-                }
-            }
-            for (String s:outputs) {
-                if (s.contains(randomId)) {
-                    points += 5;
-                    break;
-                }
-            }
-            return points;
-        }
-    }),
-    STRING_COMBINATION(new Project("String Combination",
-            "Complete the lab by printing a string that uses the + or "+
-            ", operators to combine multiple stings."
-    , 10, 2) {
-        @Override
-        public void input(BufferedWriter writer, List<String> code) {
-
-        }
-        @Override
-        public int calculatePoints(List<String> code, List<String> outputs) {
-            if (!outputs.isEmpty()) {
-                for (String s:code) {
-                    if (s.contains("print(")) {
-                        if (s.contains("\",\"") || s.contains("\"+\""))
-                            return 10;
-                    }
-                }
-            }
-            return 0;
         }
     }),
     ;
