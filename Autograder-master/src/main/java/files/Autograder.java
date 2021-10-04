@@ -25,7 +25,7 @@ public class Autograder {
     public static void registerProject(Project prj) {
         projects.add(prj);
     }
-    public static void start() throws IOException {
+    public static void start() {
         prj = projects.get(0);
         panel.setLayout(null);
 
@@ -43,8 +43,12 @@ public class Autograder {
         codeField.setLineWrap(true);
         File f = new File("autograder.py");
         if (f.exists()) {
-            for (String s:Files.readAllLines(f.toPath())) {
-                codeField.setText(codeField.getText()+s+"\n");
+            try {
+                for (String s : Files.readAllLines(f.toPath())) {
+                    codeField.setText(codeField.getText() + s + "\n");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
         panel.add(codeField);
