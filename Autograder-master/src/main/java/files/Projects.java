@@ -34,21 +34,21 @@ public enum Projects {
         }
         @Override
         public int calculatePoints(List<String> code, List<String> outputs) {
-            boolean foundPrint = false;
-            boolean foundInput = false;
-            boolean foundIf = false;
+            int points = 0;
             if (!outputs.isEmpty()) {
                 for (String s:code) {
                     if (s.contains("print("))
-                        foundPrint = true;
+                        points += 3;
                     if (s.contains("input("))
-                        foundInput = true;
+                        points += 3;
                     if (s.contains("if"))
-                        foundIf = true;
+                        points += 3;
                 }
             }
-            if (!outputs.isEmpty() && foundIf && foundPrint && foundInput) return 15;
-            return 0;
+            if (!outputs.isEmpty()) {
+                points += 6;
+            }
+            return points;
         }
     }),
     TAKING_USER_INPUT(new Project("Taking User Input",
@@ -61,20 +61,22 @@ public enum Projects {
         }
         @Override
         public int calculatePoints(List<String> code, List<String> outputs) {
-            boolean foundPrint = false;
-            boolean foundInput = false;
+            int points = 0;
             if (!outputs.isEmpty()) {
                 for (String s:code) {
                     if (s.contains("print(")) {
-                        foundPrint = true;
+                        points += 5;
                     } if (s.contains("input("))
-                        foundInput = true;
+                        points += 5;
                 }
             }
             for (String s:outputs) {
-                if (s.contains(randomId) && foundInput && foundPrint) return 15;
+                if (s.contains(randomId)) {
+                    points += 5;
+                    break;
+                }
             }
-            return 0;
+            return points;
         }
     }),
     STRING_COMBINATION(new Project("String Combination",
