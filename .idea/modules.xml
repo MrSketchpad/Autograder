@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Autograder.iml" filepath="$PROJECT_DIR$/.idea/Autograder.iml" />
       <module fileurl="file://$PROJECT_DIR$/Autograder-master/Autograder-master.iml" filepath="$PROJECT_DIR$/Autograder-master/Autograder-master.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/Autograder-master (1).iml" filepath="$PROJECT_DIR$/.idea/Autograder-master (1).iml" />
     </modules>
   </component>
 </project>

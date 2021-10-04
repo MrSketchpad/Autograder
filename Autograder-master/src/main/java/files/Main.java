@@ -5,11 +5,6 @@ public class Main {
         for (Projects s:Projects.values()) {
             Autograder.registerProject(s.getProject());
         }
-        try {
-            Autograder.start();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        Autograder.start();
     }
 }
