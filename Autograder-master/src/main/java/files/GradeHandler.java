@@ -34,8 +34,6 @@ public class GradeHandler implements ActionListener {
 
             ProcessBuilder builder = new ProcessBuilder("py",fileName);
             Process p = builder.start();
-            BufferedReader input = new BufferedReader(new
-                    InputStreamReader(p.getInputStream()));
             BufferedReader error = new BufferedReader(new
                     InputStreamReader(p.getErrorStream()));
 
@@ -46,6 +44,8 @@ public class GradeHandler implements ActionListener {
 
             Output.print("Output:");
             List<String> outputs = new ArrayList<>();
+            BufferedReader input = new BufferedReader(new
+                    InputStreamReader(p.getInputStream()));
             while ((s = input.readLine()) != null) {
                 Output.print(s);
                 outputs.add(s);

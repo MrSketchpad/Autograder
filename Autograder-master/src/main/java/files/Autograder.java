@@ -44,9 +44,8 @@ public class Autograder {
         File f = new File("autograder.py");
         if (f.exists()) {
             try {
-                for (String s : Files.readAllLines(f.toPath())) {
+                for (String s : Files.readAllLines(f.toPath()))
                     codeField.setText(codeField.getText() + s + "\n");
-                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
