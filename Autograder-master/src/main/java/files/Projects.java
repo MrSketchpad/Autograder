@@ -6,13 +6,31 @@ import java.util.Arrays;
 import java.util.List;
 
 public enum Projects {
+    PRINT(new Project("Printing Something",
+            "Complete the lab by printing something using the print() "+
+                    "function."
+            , 5, 1) {
+        @Override
+        public void input(BufferedWriter writer, List<String> code) {
+
+        }
+        @Override
+        public int calculatePoints(List<String> code, List<String> outputs) {
+            if (!outputs.isEmpty()) {
+                for (String s:code) {
+                    if (s.contains("print(")) return 5;
+                }
+            }
+            return 0;
+        }
+    }),
     USING_IF_STATEMENT(new Project("Using If Statements",
             "Complete the lab by using an if statement to print something "+
             "if a user's input is equal to 'Print'"
     , 15, 4) {
         @Override
         public void input(BufferedWriter writer, List<String> code) throws IOException {
-            writer.write("Print");
+            writer.write(".");
         }
         @Override
         public int calculatePoints(List<String> code, List<String> outputs) {
@@ -29,9 +47,7 @@ public enum Projects {
                         foundIf = true;
                 }
             }
-            for (String s:outputs) {
-                if (s.contains("Print") && foundInput && foundPrint && foundIf) return 15;
-            }
+            if (!outputs.isEmpty() && foundIf && foundPrint && foundInput) return 15;
             return 0;
         }
     }),
@@ -77,24 +93,6 @@ public enum Projects {
                         if (s.contains("\",\"") || s.contains("\"+\""))
                             return 10;
                     }
-                }
-            }
-            return 0;
-        }
-    }),
-    PRINT(new Project("Printing Something",
-            "Complete the lab by printing something using the print() "+
-            "function."
-    , 5, 1) {
-        @Override
-        public void input(BufferedWriter writer, List<String> code) {
-
-        }
-        @Override
-        public int calculatePoints(List<String> code, List<String> outputs) {
-            if (!outputs.isEmpty()) {
-                for (String s:code) {
-                    if (s.contains("print(")) return 5;
                 }
             }
             return 0;
