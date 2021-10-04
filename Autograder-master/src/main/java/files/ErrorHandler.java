@@ -27,5 +27,6 @@ public class ErrorHandler implements ActionListener {
         desc.setLineWrap(true);
         desc.setCaretColor(Color.RED);
         panel.add(desc);
+        panel.setBackground(desc.getBackground());
     }
 }

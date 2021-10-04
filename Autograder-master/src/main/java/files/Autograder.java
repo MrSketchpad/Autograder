@@ -54,6 +54,7 @@ public class Autograder {
         outputField.setBounds(10,550,450,100);
         outputField.setLineWrap(true);
         outputField.setEditable(false);
+        outputField.setBackground(frame.getBackground());
         panel.add(outputField);
 
         viewError.setVisible(false);
@@ -63,6 +64,7 @@ public class Autograder {
 
         frame.setSize(500,750);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setIconImage(new ImageIcon("icon.png").getImage());
         frame.setVisible(true);
         frame.add(panel);
 

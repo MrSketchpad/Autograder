@@ -42,7 +42,6 @@ public class GradeHandler implements ActionListener {
             write.flush();
             p.getOutputStream().close();
 
-            Output.print("Output:");
             List<String> outputs = new ArrayList<>();
             BufferedReader input = new BufferedReader(new
                     InputStreamReader(p.getInputStream()));

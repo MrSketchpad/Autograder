@@ -21,5 +21,6 @@ public class InstructionsHandler implements ActionListener {
         desc.setEditable(false);
         desc.setLineWrap(true);
         panel.add(desc);
+        panel.setBackground(desc.getBackground());
     }
 }
